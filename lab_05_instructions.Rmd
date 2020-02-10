@@ -1,5 +1,6 @@
 ---
-title: 'Instructions for Lab #5'
+title: "Instructions for Lab #5"
+subtitle: "The Geochemical Carbon Cycle"
 author: "Jonathan Gilligan"
 date: "Lab: Feb. 10; Due: Feb. 24"
 fontsize: 12pt
