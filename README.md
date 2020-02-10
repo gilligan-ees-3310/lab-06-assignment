@@ -4,16 +4,18 @@
 
 There are two files for this lab.
 
-1. Start by reading `lab_05_instructions.pdf`, which describes things you need
-to know for this lab (about the R functions for working with the MODTRAN model
-and the data that it produces, as well as some useful R functions that we will
-use in procesing and graphing data for this lab.)
+1. Start by reading [`lab_05_instructions.pdf`](lab_05_instructions.pdf),
+   (online version [`lab-05-instructions.md`](lab-05-instructions.md) on GitHub)
+   which describes things you need to know for this lab (about the R functions 
+   for working with the GEOCARB model and the data that it produces, as well as 
+   some useful R functions that we will use in procesing and graphing data for 
+   this lab.)
 
-This file also has the exercises you will do for this lab.
+   This file also has the exercises you will do for this lab.
 
 2. When you come to lab, you will work through the exercises, and you will
-edit the file `lab_05_exercises.Rmd` to write your answers and show your
-work.
+   edit the file `lab_05_exercises.Rmd` to write your answers and show your
+   work.
 
 ## Instructions:
 
@@ -27,11 +29,13 @@ work.
   and the new PDF files) to your local git repository.
 * Push the changes from your local git repository to github.
 
-    The last changes that you push before the due date (9:00 AM on 
-    Monday, Oct. 1) will be graded.
+  The last changes that you push before the due date (9:00 AM on 
+  Monday, Feb. 24) will be graded.
+  If you run into difficulty and need extra time, please contact Ms. Best or 
+  Prof. Gilligan.
 
-I advise using git to commit changes frequently as you work and push those commits
-to github.
+I advise using git to commit changes frequently as you work and push those 
+commits to GitHub.
 
 I also advise knitting your answers frequently to make sure that they 
 knit correctly.
