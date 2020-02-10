@@ -1,8 +1,20 @@
 ---
 title: 'Lab #5 Exercises'
+subtitle: "The Geochemical Carbon Cycle"
 author: "put your name here"
-date: "Lab: Sept. 24; Due: Oct. 1."
-output: html_document
+date: "Lab: Feb. 10; Due: Feb. 24"
+fontsize: 12pt
+output: 
+  pdf_document:
+    includes:
+      in_header: "ees3310.sty"
+    toc: yes
+  github_document:
+    toc: yes
+  word_document:
+    toc: yes
+  html_document:
+    toc: yes
 ---
 ```{r setup, include=FALSE}
 knitr::knit_hooks$set(inline = function(x) { knitr:::format_sci(x, 'md')})
