@@ -59,20 +59,20 @@ run_geocarb = function(filename, co2_spike,
                        delta_t2x = 3.0,
                        million_years_ago = 0,
                        mean_latitude_continents = 30) {
-  url = str_c("http://climatemodels.uchicago.edu/cgi-bin/geocarb/geocarb.cgi?",
+  gc_url <<- str_c("http://climatemodels.uchicago.edu/cgi-bin/geocarb/geocarb.cgi?",
               str_c(
                 c('year', 'co2_1', 'co2_2',
                   'dt2x', 'latitude',
                   'plnt_1', 'plnt_2',
-                  'lnd_1', 'lnd_2', 'spike'),
+                  'lnd_1', 'lnd_2', 'spike', 'spike13C'),
                 c(million_years_ago,
                   degas_spinup, degas_sim,
                   delta_t2x, mean_latitude_continents,
                   as.integer(plants_spinup), as.integer(plants_sim),
-                  land_area_spinup, land_area_sim, co2_spike),
+                  land_area_spinup, land_area_sim, co2_spike, -20),
                 sep = "=", collapse = "&"
               ))
-  results = read_html(url)
+  results = read_html(gc_url)
   body <- as_list(results) %>% unlist() %>% simplify()
   write(body, filename)
   lines = body %>% str_split("\n") %>% unlist()
