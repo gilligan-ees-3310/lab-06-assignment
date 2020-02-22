@@ -59,7 +59,7 @@ run_geocarb = function(filename, co2_spike,
                        delta_t2x = 3.0,
                        million_years_ago = 0,
                        mean_latitude_continents = 30) {
-  gc_url <<- str_c("http://climatemodels.uchicago.edu/cgi-bin/geocarb/geocarb.cgi?",
+  gc_url = str_c("http://climatemodels.uchicago.edu/cgi-bin/geocarb/geocarb.cgi?",
               str_c(
                 c('year', 'co2_1', 'co2_2',
                   'dt2x', 'latitude',
