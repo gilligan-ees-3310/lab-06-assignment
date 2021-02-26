@@ -1,25 +1,23 @@
-library(pacman)
-
-p_load(tidyverse)
-p_load(stringr)
-p_load(scales)
-p_load(xml2)
+library(tidyverse)
+library(stringr)
+library(scales)
+library(xml2)
 
 column_names = c(
   year = "year",
-  tco2 = "co2.total",
-  pCO2 = "co2.atmos",
-  alk = "alkalinity.ocean",
-  d13Cocn = "delta.13C.ocean",
-  d13Catm = "delta.13C.atmos",
-  CO3 = "carbonate.ocean",
-  WeatC = "carbonate.weathering",
-  WeatS = "silicate.weathering",
-  TotW = "total.weathering",
-  BurC = "carbon.burial",
-  Degas = "degassing.rate",
-  Tatm = "temp.atmos",
-  Tocn = "temp.ocean"
+  tco2 = "co2_total",
+  pCO2 = "co2_atmos",
+  alk = "alkalinity_ocean",
+  d13Cocn = "delta_13C_ocean",
+  d13Catm = "delta_13C_atmos",
+  CO3 = "carbonate_ocean",
+  WeatC = "carbonate_weathering",
+  WeatS = "silicate_weathering",
+  TotW = "total_weathering",
+  BurC = "carbon_burial",
+  Degas = "degassing_rate",
+  Tatm = "temp_atmos",
+  Tocn = "temp_ocean"
 )
 
 column_descr = c(
@@ -49,7 +47,8 @@ columns = tibble(
   )
 
 
-run_geocarb = function(filename, co2_spike,
+run_geocarb = function(co2_spike,
+                       filename = NULL,
                        degas_spinup = 7.5,
                        degas_sim = 7.5,
                        plants_spinup = TRUE,
@@ -74,7 +73,9 @@ run_geocarb = function(filename, co2_spike,
               ))
   results = read_html(gc_url)
   body <- as_list(results) %>% unlist() %>% simplify()
+  if (! is.null(filename)) {
   write(body, filename)
+  }
   lines = body %>% str_split("\n") %>% unlist()
   lines %>% str_trim() %>% str_replace_all('[ \t]+', ',') %>%
     str_c(collapse = "\n") %>% read_csv(na = c('NA', 'NaN')) -> df

@@ -1,5 +1,7 @@
-library(pacman)
-p_load(tidyverse, jsonlite, httr, magrittr)
+library(magrittr)
+library(tidyverse)
+library(jsonlite)
+library(httr)
 
 # rrtm_params <- read_rds(file.path(find_rstudio_root_file("_data"),
 #                                   "params.Rds"))

@@ -1,0 +1,75 @@
+---
+title: "Exercises for Lab #6"
+subtitle: "The Geochemical Carbon Cycle"
+author: "put your name here"
+date: "Lab: Mar. 1; Due: Mar. 8"
+fontsize: 12pt
+output: 
+  word_document:
+    toc: yes
+  pdf_document:
+    includes:
+      in_header: "ees3310.sty"
+    toc: yes
+  html_document:
+    toc: yes
+  github_document:
+    toc: yes
+---
+```{r setup, include=FALSE}
+knitr::knit_hooks$set(inline = function(x) { knitr:::format_sci(x, 'md')})
+knitr::opts_chunk$set(echo = TRUE, include = TRUE, cache = FALSE)
+
+if (knitr::is_latex_output()) {
+  message("Setting PDF plot hook.")
+  new_plot_hook <- function(x, options)
+    paste("\n", knitr::hook_plot_tex(x, options), "\n")
+
+  knitr::knit_hooks$set(plot = new_plot_hook)
+  knitr::opts_chunk$set(fig.width = 5, fig.height = 5)
+} else {
+  message("Not using PDF output.")
+}
+
+
+options(dplyr.summarise.inform = FALSE)
+
+# This section loads necessary R libraries and sources scripts that define
+# useful functions format_md.
+#
+data_dir = "_data"
+script_dir = "_scripts"
+
+if (!dir.exists(data_dir)) dir.create(data_dir)
+
+library(tidyverse)
+library(scales)
+library(knitr)
+
+theme_set(theme_bw(base_size = 15))
+
+source(file.path(script_dir, "utils.R"), chdir = T)
+source(file.path(script_dir, "format_md.R"), chdir = T)
+source(file.path(script_dir, "geocarb.R"), chdir = T)
+```
+# Instructions
+
+Write up the answers to the exercises as brief reports in which you integrate
+your text with your R code, plots, and tables.
+
+# GEOCARB and the carbon cycle
+
+## Exercise 1: Weathering as a Function of CO~2~
+
+_See the detailed instructions in the lab instructions, and write your answer
+here_
+
+## Exercise 2: The Long-Term Fate of Fossil Fuel CO~2~
+
+_See the detailed instructions in the lab instructions, and write your answer
+here_
+
+## Exercise 3 (Graduate Students Only): How the Land Plants Changed the Carbon Cycle
+
+_See the detailed instructions in the lab instructions, and write your answer
+here_
