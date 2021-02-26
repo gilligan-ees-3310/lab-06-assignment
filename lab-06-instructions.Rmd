@@ -26,7 +26,7 @@ if (knitr::is_latex_output()) {
     paste("\n", knitr::hook_plot_tex(x, options), "\n")
 
   knitr::knit_hooks$set(plot = new_plot_hook)
-  knitr::opts_chunk$set(fig.width = 5, fig.height = 5)
+  knitr::opts_chunk$set(fig.width = 6, fig.height = 4)
 } else {
   message("Not using PDF output.")
 }
@@ -218,7 +218,8 @@ Suppose you have a tibble with columns `time`, `foo` and `bar`,
 as shown below:
 
 ```{r pivot_example}
-df = tibble(time = seq(100), foo = -1 + 0.1 * time - 0.001 * time^2, bar = sin(time / 10))
+df = tibble(time = seq(100), foo = -1 + 0.1 * time - 0.001 * time^2, 
+            bar = sin(time / 10))
 kable(head(df), digits = 2)
 ```
 
@@ -345,8 +346,8 @@ b) Check that the model balances silicate weathering against CO~2~ degassing
    Use `ggplot` to make a graph illustrating this balance.
    What is causing the silicate weathering rate to change?
    
-   **Hint:** This is a good place to use the `pivot_longer` function as I 
-   described above.
+   **Hint:** This is a good place to use the `pivot_longer` function to make a 
+   plot with two different variables, as I described above.
 
 c) Repeat this run with a range of degassing values for the simulation phase
    and make a table or a graph of the equilibrium CO~2~ concentration versus 
