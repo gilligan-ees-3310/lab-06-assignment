@@ -325,7 +325,7 @@ degassing changes. This rate has changed many times in Earth's history.
 
 Run a simulation with `co2_spike` set to zero, and set the model to increase
 the degassing rate at time zero (i.e., set `degas_sim` to a higher value than
-`degas_spinup`). Leave `degas_sim` at 7.5 and start out by setting 
+`degas_spinup`). Leave `degas_spinup` at 7.5 and start out by setting 
 `degas_sim = 10`.
 
 a) Does an increase in CO~2~ degassing drive atmospheric CO~2~ up or down?
@@ -333,13 +333,24 @@ a) Does an increase in CO~2~ degassing drive atmospheric CO~2~ up or down?
    at time zero?
    
    For the purposes of this exercise, consider that CO~2~ has stabilized when
-   the change in `co2_atmos` for a time-step in the model is less than 
-   1 ppm.
+   the rate of change in `co2_atmos` for a time-step in the model is less 
+   `r format_md(2E-5, digits = 0, format = "scientific")` ppm per year.
    
    **Hint:** Look back to the discussion of the `lag()` function in Lab #2. 
    The expression `co2_atmos - lag(co2_atmos)` will tell you the change in
    `co2_atmos` from the previous row to the current one in a tibble or 
-   data frame.
+   data frame, and the expression `year - lag(year)` will tell you the number
+   of years that passed from the previous row to the current one.
+   Then `(co2_atmos - lag(co2_atmos)) / (year - lag(year))` will tell you the
+   rate of change of CO~2~, in ppm per year.
+   
+   If you have a tibble of data from a GEOCARB run, you can use the `mutate` 
+   function to add a new column to your tibble, and then use the `filter` 
+   function to select only the rows where `year > 0` (so you're looking after
+   the change in degassing) and where the rate of change of CO~2~ is less than
+   `r format_md(2E-5, digits = 0, format = "scientific")` ppm per year.
+   Remember that in R, you would write 
+   `r format_md(2E-5, digits = 0, format = "scientific")` as `2E-5` or `2.0E-5`.
 
 b) Check that the model balances silicate weathering against CO~2~ degassing
    when the CO~2~ in the atmosphere stabilizes.
