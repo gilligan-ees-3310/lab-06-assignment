@@ -1,5 +1,4 @@
 library(tidyverse)
-library(stringr)
 library(scales)
 library(xml2)
 

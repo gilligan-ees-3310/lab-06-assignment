@@ -1,6 +1,5 @@
-library(tidyverse)
-library(scales)
-library(xml2)
+library(pacman)
+p_load(tidyverse, scales, xml2)
 
 ssource <- function(filename, chdir = F) {
   if(!file.exists(filename)) {
@@ -153,8 +152,8 @@ run_modtran <- function(filename = NULL,
                 "altitude_km", "looking")) %>%
     map(~as.character(.x[1])) %>%
     modify_at("atmosphere", ~str_to_lower(.x) %>%
-             str_replace_all(c("[^a-z0-9]+" = " ", "  +" = " ")) %>%
-             str_trim()
+                str_replace_all(c("[^a-z0-9]+" = " ", "  +" = " ")) %>%
+                str_trim()
     ) %>%
     simplify()
   for(k in c('h2o_fixed', 'atmosphere', 'clouds', 'looking')) {
@@ -179,6 +178,7 @@ run_modtran <- function(filename = NULL,
     write(body, filename)
   }
   Sys.sleep(1)
+
 
   output <- str_c(body, collapse = "\n") %>% read_modtran(text = .)
   invisible(output)
@@ -346,7 +346,7 @@ plot_modtran <- function(filename = NULL, text = NULL,
     ) %>% na.omit() %>% filter(between(k, k_limits[1], k_limits[2]))
 
   if (is.null(lambda)) {
-  lambda = c(1, 2, 2.5, 3, 3.5, 4, 5:10, 12, 14, 17, 20, 25, 30, 35, 40, 50, 100)
+    lambda = c(1, 2, 2.5, 3, 3.5, 4, 5:10, 12, 14, 17, 20, 25, 30, 35, 40, 50, 100)
   }
 
   spectrum <- spectrum %>% select(k, tk) %>% na.omit() %>%
