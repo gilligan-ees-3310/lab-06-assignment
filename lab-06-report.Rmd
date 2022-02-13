@@ -2,7 +2,7 @@
 title: "Exercises for Lab #6"
 subtitle: "The Geochemical Carbon Cycle"
 author: "put your name here"
-date: "Lab: Mar. 1; Due: Mar. 8"
+date: "Lab: Feb. 28; Due: Mar. 16"
 fontsize: 12pt
 output: 
   word_document:
